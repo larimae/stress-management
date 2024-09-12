@@ -237,3 +237,47 @@ button:hover {
     background-color: #45a049;
 }
 
+/* Posts Container */
+#postsContainer {
+    margin: 20px;
+}
+
+.post {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between; /* Align items in the container */
+    align-items: center;
+}
+
+/* Post Details */
+.post-description {
+    margin-right: 10px; /* Space between description and delete button */
+}
+
+.post a {
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+}
+
+.post a:hover {
+    text-decoration: underline;
+}
+
+/* Delete Button Styling */
+.delete-btn {
+    background-color: #f44336; /* Red background */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.delete-btn:hover {
+    background-color: #c62828;
+}
