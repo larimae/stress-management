@@ -5,8 +5,18 @@ body{
 
 header{
     border-bottom: solid 2px black;
+    background-color: white;
+    width: 100vw;
     padding: 10px;
+    transition:all 0.2ms ease-in-out;
 }
+
+.fixedHeader{
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
 header div{
     display: flex;
     flex-direction: row;
@@ -62,20 +72,16 @@ header h1{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin: 0;
+    margin-top: 100px;
     padding: 0;
 }
 
 .aside{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
+    text-align: center;
     border: solid 2px black;
     width: 100%;
     height: 100px;
     margin: 15px 0 10px 10px;
-   
 }
 
 .card-container{
@@ -222,6 +228,13 @@ textarea {
 aside h3{
     margin: 5px;
 }
+
+.asideFixed{
+    display: flex;
+    position: fixed;
+    right: 0;
+}
+
 button {
     margin-bottom: 500px;
     border: none;
@@ -238,39 +251,40 @@ button:hover {
     background-color: #45a049;
 }
 
-/* Posts Container */
-#postsContainer {
-    margin: 20px;
-}
-
 .post {
-    border: 1px solid #ddd;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
     display: flex;
-    justify-content: space-between; /* Align items in the container */
-    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+   border: solid 2px black;
+   height:50px;
+   margin-bottom: 10px;
 }
 
-/* Post Details */
 .post-description {
-    margin-right: 10px; /* Space between description and delete button */
+    display: flex;
+    width:100%;
+    overflow: hidden; 
+    white-space: nowrap; 
+    text-overflow: ellipsis; 
+    align-items: center; 
 }
 
 .post a {
-    text-decoration: none;
-    color: #007BFF;
-    font-weight: bold;
+    display: flex; 
+    width:50px;
+    overflow: hidden; 
+   white-space: nowrap; 
+   text-overflow: ellipsis; 
+   align-items: center; 
 }
 
 .post a:hover {
     text-decoration: underline;
 }
 
-/* Delete Button Styling */
+
 .delete-btn {
-    background-color: #f44336; /* Red background */
+    background-color: #f44336; 
     color: white;
     border: none;
     padding: 5px 10px;
@@ -283,13 +297,10 @@ button:hover {
     background-color: #c62828;
 }
 
-/*
+
 .scroll-box{
-    padding-right:10px;
-    height: 300px;
-    width: 100%;
+    padding: 2px;
+    height: 100vh;
+    width: 200px;
     border: 1px solid gray;
-    overflow-y: auto;
-    border: 1px gray;
-  
 }

@@ -5,9 +5,6 @@ const closeBtn = document.getElementsByClassName("close");
 const forum = document.getElementById("forum");
 const postsContainer = document.getElementById("postsContainer");
 
-
-
-
 openModalBtn.onclick = function() {
     modal.style.display = "block";
 }
@@ -45,7 +42,6 @@ forum.onsubmit = function(event){
     }
 
     const posts = JSON.parse(localStorage.getItem("posts")) || [];
-    console.log(posts);
     posts.push(newPosts);
     localStorage.setItem("posts", JSON.stringify(posts));
 
@@ -60,31 +56,17 @@ function displayPosts(){
     postsContainer.innerHTML = ''; // Clear previous posts
 
     const posts = JSON.parse(localStorage.getItem("posts")) || [];
-    if( Array.isArray(posts)){
-        posts.forEach(function(post, index) {
-            const postElement = document.createElement("div");
-            postElement.classList.add("post");
-            postElement.innerHTML = `
-                <div class="post-content">
-                    <a href="#" data-index="${index}">${post.title}</a>
-                    <span class="post-description">${post.description}</span>
-                </div>
-                <button class="delete-btn" data-index="${index}">Delete</button>`;
-            postsContainer.appendChild(postElement);
-        })
-    }
-    
-    // posts.forEach(function(post, index) {
-    //     const postElement = document.createElement("div");
-    //     postElement.classList.add("post");
-    //     postElement.innerHTML = `
-    //         <div class="post-content">
-    //             <a href="#" data-index="${index}">${post.title}</a>
-    //             <span class="post-description">${post.description}</span>
-    //         </div>
-    //         <button class="delete-btn" data-index="${index}">Delete</button>`;
-    //     postsContainer.appendChild(postElement);
-    // })
+    posts.forEach(function(post, index) {
+        const postElement = document.createElement("div");
+        postElement.classList.add("post");
+        postElement.innerHTML = `
+            <div class="post-content">
+                <a href="#" data-index="${index}">${post.title}</a>
+                <span class="post-description">${post.description}</span>
+            </div>
+            <button class="delete-btn" data-index="${index}">Delete</button>`;
+        postsContainer.appendChild(postElement);
+    })
     
 
     const postLinks = postsContainer.querySelectorAll('a');
@@ -94,7 +76,7 @@ function displayPosts(){
             const index = this.getAttribute("data-index");
             showPost(index);
         }
-    })
+    });
 
     const deleteButtons = postsContainer.querySelectorAll(".delete-btn");
     deleteButtons.forEach(button => {
@@ -124,3 +106,23 @@ function deletePosts(index){
 }
 
 displayPosts();
+
+let prevScrollpos = window.scrollY;
+
+/* Get the header element and it's position */
+const headerDiv = document.querySelector("header");
+
+window.onscroll = function() {
+  let currentScrollPos = window.scrollY;
+
+  /* if scrolling down, let it scroll out of view as normal */
+  if (prevScrollpos <= currentScrollPos ){
+      headerDiv.classList.remove("fixedHeader");
+  }
+  /* otherwise if we're scrolling up, fix the nav to the top */
+  else{  
+      headerDiv.classList.add("fixedHeader");
+  }
+
+  prevScrollpos = currentScrollPos;
+}
