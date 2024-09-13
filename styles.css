@@ -9,12 +9,28 @@ header{
     border-bottom: solid 2px black;
     background-color: #aaa;
     padding: 10px;
+    /* position: fixed;
+    top: 0;
+    left: 0; */
+    width: 100vw ;
+    /* margin-top: 50px; */
+    display:block;
+}
+
+header.fixedToTop {
+    
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw ;
-    /* margin-top: 50px; */
+    right: 0;
+
 }
+
+/* add space for fixed header when it's fixed to top */
+header.fixedToTop + div{
+    margin-top:8rem;
+}
+
 header div{
     display: flex;
     flex-direction: row;
@@ -100,6 +116,9 @@ header h1{
     height: 500px;
     border: solid 2px black;
     box-sizing: border-box;
+}
+.main-sizing{
+    flex: 1 0 60%;
 }
 .main-card-content{
     margin-top: 10px;
@@ -225,7 +244,9 @@ textarea {
 textarea {
     resize: vertical; 
 }
-
+.aside-sizing{
+    flex: 1 0 30%;
+}
 aside h3{
     margin: 5px;
 }
