@@ -124,3 +124,28 @@ function deletePosts(index){
 }
 
 displayPosts();
+
+
+// // adding the header scroll dissapearing feature
+// const prevScrollpos = window.scrollY;
+
+// /* Get the header element and it's position */
+// const headerDiv = document.querySelector("header");
+// var headerBottom = headerDiv.offsetTop + headerDiv.offsetHeight;
+
+// window.onscroll = function() {
+// const currentScrollPos = window.scrollY;
+
+//   /* if scrolling down, let it scroll out of view as normal */
+//   if (prevScrollpos <= currentScrollPos ){
+//       headerDiv.style.display="block";
+//   }
+//   /* otherwise if we're scrolling up, fix the nav to the top */
+//   else{  
+//     headerDiv.style.display="none";
+   
+//   }
+
+//   prevScrollpos = currentScrollPos;
+// }
+
