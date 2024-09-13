@@ -79,7 +79,7 @@ function displayPosts(){
             const index = this.getAttribute("data-index");
             showPost(index);
         }
-    });
+    })
 
     const deleteButtons = postsContainer.querySelectorAll(".delete-btn");
     deleteButtons.forEach(button => {
