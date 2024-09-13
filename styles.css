@@ -1,6 +1,8 @@
 body{
     margin: 0;
     padding: 0;
+   
+
 }
 
 header{
@@ -23,9 +25,12 @@ header div{
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    
 }
 header h1{
     margin-right: 700px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
 }
 
 .burger-menu{
@@ -74,6 +79,8 @@ header h1{
     justify-content: center;
     margin-top: 100px;
     padding: 0;
+    margin-top: 100px;
+
 }
 
 .aside{
@@ -97,6 +104,9 @@ header h1{
     height: 500px;
     border: solid 2px black;
     box-sizing: border-box;
+}
+.main-sizing{
+    flex: 1 0 60%;
 }
 .main-card-content{
     margin-top: 10px;
@@ -224,7 +234,9 @@ textarea {
 textarea {
     resize: vertical; 
 }
-
+.aside-sizing{
+    flex: 1 0 30%;
+}
 aside h3{
     margin: 5px;
 }
