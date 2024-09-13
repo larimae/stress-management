@@ -5,6 +5,9 @@ const closeBtn = document.getElementsByClassName("close");
 const forum = document.getElementById("forum");
 const postsContainer = document.getElementById("postsContainer");
 
+
+
+
 openModalBtn.onclick = function() {
     modal.style.display = "block";
 }
@@ -41,7 +44,8 @@ forum.onsubmit = function(event){
         content: contentEl.value,
     }
 
-    const posts = JSON.parse(localStorage.getItem("posts"));
+    const posts = JSON.parse(localStorage.getItem("posts")) || [];
+    console.log(posts);
     posts.push(newPosts);
     localStorage.setItem("posts", JSON.stringify(posts));
 
@@ -55,18 +59,32 @@ forum.onsubmit = function(event){
 function displayPosts(){
     postsContainer.innerHTML = ''; // Clear previous posts
 
-    const posts = JSON.parse(localStorage.getItem("posts"));
-    posts.forEach(function(post, index) {
-        const postElement = document.createElement("div");
-        postElement.classList.add("post");
-        postElement.innerHTML = `
-            <div class="post-content">
-                <a href="#" data-index="${index}">${post.title}</a>
-                <span class="post-description">${post.description}</span>
-            </div>
-            <button class="delete-btn" data-index="${index}">Delete</button>`;
-        postsContainer.appendChild(postElement);
-    })
+    const posts = JSON.parse(localStorage.getItem("posts")) || [];
+    if( Array.isArray(posts)){
+        posts.forEach(function(post, index) {
+            const postElement = document.createElement("div");
+            postElement.classList.add("post");
+            postElement.innerHTML = `
+                <div class="post-content">
+                    <a href="#" data-index="${index}">${post.title}</a>
+                    <span class="post-description">${post.description}</span>
+                </div>
+                <button class="delete-btn" data-index="${index}">Delete</button>`;
+            postsContainer.appendChild(postElement);
+        })
+    }
+    
+    // posts.forEach(function(post, index) {
+    //     const postElement = document.createElement("div");
+    //     postElement.classList.add("post");
+    //     postElement.innerHTML = `
+    //         <div class="post-content">
+    //             <a href="#" data-index="${index}">${post.title}</a>
+    //             <span class="post-description">${post.description}</span>
+    //         </div>
+    //         <button class="delete-btn" data-index="${index}">Delete</button>`;
+    //     postsContainer.appendChild(postElement);
+    // })
     
 
     const postLinks = postsContainer.querySelectorAll('a');
@@ -76,7 +94,7 @@ function displayPosts(){
             const index = this.getAttribute("data-index");
             showPost(index);
         }
-    });
+    })
 
     const deleteButtons = postsContainer.querySelectorAll(".delete-btn");
     deleteButtons.forEach(button => {

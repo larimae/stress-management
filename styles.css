@@ -77,9 +77,10 @@ header h1{
     flex-wrap: wrap;
     justify-content: center;
     border: solid 2px black;
-    width: 15vw;
-    height: 100%;
+    width: 100%;
+    height: 100px;
     margin: 15px 0 10px 10px;
+   
 }
 
 .card-container{
@@ -172,18 +173,20 @@ header h1{
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
     background-color: rgba(0,0,0,0.4);
+
 }
 
 .modal-content{
     background-color: white;
-    margin: 15% auto;
+    margin: 15px auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
+    height: 70%;
     max-width: 600px;
     box-sizing: border-box;
+    border-radius: 8px;
 }
 
 .close {
@@ -283,4 +286,15 @@ button:hover {
 
 .delete-btn:hover {
     background-color: #c62828;
+}
+
+/*
+.scroll-box{
+    padding-right:10px;
+    height: 300px;
+    width: 100%;
+    border: 1px solid gray;
+    overflow-y: auto;
+    border: 1px gray;
+  
 }
