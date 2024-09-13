@@ -85,6 +85,7 @@ function displayPosts(){
             deletePosts(index);
         }
     });
+    
 }
 function showPost(index){
     const posts = JSON.parse(localStorage.getItem("posts"));
