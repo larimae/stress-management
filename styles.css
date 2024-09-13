@@ -6,6 +6,8 @@ body{
 header{
     border-bottom: solid 2px black;
     padding: 10px;
+    
+    
 }
 header div{
     display: flex;
@@ -13,9 +15,12 @@ header div{
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    
 }
 header h1{
     margin-right: 700px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
 }
 
 .burger-menu{
