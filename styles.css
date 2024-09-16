@@ -6,6 +6,11 @@ body{
 }
 
 header{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
     border-bottom: solid 2px black;
     background-color: white;
     width: 100vw;
@@ -19,16 +24,8 @@ header{
     left: 0;
 }
 
-header div{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    
-}
 header h1{
-    margin-right: 700px;
+    text-align: center;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     
 }
@@ -364,3 +361,16 @@ canvas:hover{
     z-index: 1;
 }
 
+.navbar{
+    display: flex;
+    margin-right: 2%;
+}
+
+.navbar a{
+    display: inline-flex;
+    border: solid 2px black;
+    margin: .5rem;
+    padding: .2rem;
+    justify-content: space-between;
+    text-decoration: none;
+}
