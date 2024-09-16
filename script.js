@@ -12,11 +12,37 @@ document.addEventListener("DOMContentLoaded", function() {
     deleteBtn.addEventListener('click', function(event) {
         event.preventDefault();
 
+        let posts = JSON.parse(localStorage.getItem("posts"));
+
         const log = aside[0].children;
 
-       const check = log[0].children[0].children[0];
+        let savePosts = [];
 
-       console.log(check.checked);
+       for(let i = 0; i < log.length; i++){
+
+        // console.log(log[i].children[0].children[0].checked);
+
+
+        if(!log[i].children[0].children[0].checked)
+        {
+            savePosts.push(log[i].children[0])
+        };
+
+       }
+
+       posts = savePosts;
+
+       localStorage.setItem("posts", JSON.stringify(posts));
+
+       console.log(posts);
+
+       displayPosts();
+
+       
+//TODO: 
+//TODO: replace locale storage with updated array
+//TODO: redisplay posts
+
     })
 
 
@@ -90,29 +116,9 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("postContent").textContent = post.content;
         postModal.style.display = "block";
     }
-    function deletePosts(){
-        //A- creating a const called checkBoxes to see which boxes are checked
-        const checkBoxes = querySelectorAll('input[type="checkbox"]');
-        const posts = JSON.parse(localStorage.getItem("posts")) || [];
-
-        if (checkBoxes.length === 0) {
-            return; // Exit if no checkboxes are checked
-        }
-
-        //A- gets the index of all the checked boxes/ posts
-        const deletePosts = Array.from(checkBoxes).map(checkBoxes=> parseInt(checkBoxes(checkbox.dataset.index)));
-        //A- takes out the posts that aren't selected
-        const updatedJournal = posts.filter(index => !deletePosts.includes(index));
-
-        localStorage.setItem("posts", JSON.stringify(updatedJournal));
-        displayPosts();
-    }
-
-    // deleteBtn.onclick = function() {
-    //     deletePosts();
-    // }
 
     displayPosts();
+    
     let prevScrollpos = window.scrollY;
     /* Get the header element and it's position */
     const headerDiv = document.querySelector("header");
