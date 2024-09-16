@@ -176,7 +176,23 @@
     
                                 <label for="content">Content:</label>
                                 <textarea id="content" name="content" rows="4' required"></textarea>
+
+                                <h4>Canvas</h4>
+
+                                <div class="palette" id="palette">
+                                    <!-- Color palette will be dynamically generated -->
+                                </div>
                                 
+                                <h4>Brush Size</h4>
+
+                                <select id="brushSize">
+                                    <option value="1">Small</option>
+                                    <option value="5">Medium</option>
+                                    <option value="10">Large</option>
+                                </select>
+
+                                <canvas id="drawingCanvas"></canvas>
+
                                 <button type="submit">Submit</button>
                             </form>
                         </div>

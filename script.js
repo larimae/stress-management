@@ -7,6 +7,9 @@ document.addEventListener("DOMContentLoaded", function() {
     const postsContainer = document.getElementById("postsContainer");
     const deleteBtn= document.querySelector(".delete-btn");
     const asideFixed= document.querySelector(".asideFixed");
+    const canvas = document.getElementById('drawingCanvas');
+    const context = canvas.getContext('2d');
+    const brushSize = document.getElementById('brushSize');
 
     // const aside= document.querySelectorAll("#postsContainer");
 
@@ -81,20 +84,33 @@ deleteBtn.addEventListener('click', function(event) {
             modal.style.display = "none";
         }
     }
+
+    function getCanvasImage() {
+        return canvas.toDataURL('image/png'); // Returns a Base64-encoded PNG image
+    }
+    
     forum.onsubmit = function(event){
         event.preventDefault();
+
         const titleEl = document.getElementById("title");
         const descriptionEl = document.getElementById("description");
         const contentEl = document.getElementById("content");
+        const canvasImg = getCanvasImage();
+        
         const newPosts = {
             title: titleEl.value,
             description: descriptionEl.value,
             content: contentEl.value,
+            drawingImage: canvasImg,
         }
         const posts = JSON.parse(localStorage.getItem("posts")) || [];
         posts.push(newPosts);
         localStorage.setItem("posts", JSON.stringify(posts));
+
         forum.reset();
+
+        context.clearRect(0,0, canvas.width, canvas.height);
+
         closeModal();
         displayPosts();
     }
@@ -102,11 +118,15 @@ deleteBtn.addEventListener('click', function(event) {
         postsContainer.innerHTML = ''; // Clear previous posts
         const posts = JSON.parse(localStorage.getItem("posts")) || [];
         posts.forEach(function(post, index) {
+
             const postElement = document.createElement("div");
+            const drawingIcon = post.drawingImage ? `<img src="${post.drawingImage}" alt="Drawing Icon" class="post-icon previewImg"/>` : '';
             postElement.classList.add("post");
+
             //A- adding a checkbox with each post with class post-checkbox
             postElement.innerHTML = `
                 <div class="post-content">
+                    ${drawingIcon} 
                     <input type="checkbox" class="post-checkbox" data-index="${index}"/>
                     <a href="#" data-index="${index}">${post.title}</a>
                     <span class="post-description">${post.description}</span>
@@ -127,6 +147,7 @@ deleteBtn.addEventListener('click', function(event) {
         //-A clears previous posts
         const posts = JSON.parse(localStorage.getItem("posts"));
         const post = posts[index];
+
         document.getElementById("postTitle").textContent = post.title;
         document.getElementById("postDescription").textContent = `Description: ${post.description}`;
         document.getElementById("postContent").textContent = post.content;
@@ -155,4 +176,56 @@ deleteBtn.addEventListener('click', function(event) {
         
       prevScrollpos = currentScrollPos;
     }
+
+    const colors = ['#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#FF00FF', '#00FFFF', '#000000', '#FFFFFF'];
+    const palette = document.getElementById('palette');
+
+    // Create color swatches
+    colors.forEach(color => {
+        const colorDiv = document.createElement('div');
+        colorDiv.className = 'color';
+        colorDiv.style.backgroundColor = color;
+        colorDiv.dataset.color = color; // Store color in dataset
+        palette.appendChild(colorDiv);
+    });
+
+    // Set up canvas drawing
+
+    let currentColor = '#000000'; // Default color
+
+    let drawing = false;
+
+    // Handle color selection
+    palette.addEventListener('click', (e) => {
+        if (e.target.classList.contains('color')) {
+            currentColor = e.target.dataset.color;
+        }
+    });
+
+    brushSize.addEventListener('change', (e) => {
+        context.lineWidth = e.target.value;
     })
+
+        canvas.width = 400;
+        canvas.height = 200;
+
+        canvas.addEventListener('mousedown', (e) => {
+            drawing = true;
+            context.beginPath();
+            context.moveTo(e.offsetX, e.offsetY);
+        });
+        
+        canvas.addEventListener('mousemove', (e) => {
+            if (drawing) {
+                
+                context.strokeStyle = currentColor;
+                context.lineTo(e.offsetX, e.offsetY);
+                context.stroke();
+            }
+        });
+        
+        canvas.addEventListener('mouseup', () => {
+            drawing = false;
+        });
+    })
+    
