@@ -6,45 +6,62 @@ document.addEventListener("DOMContentLoaded", function() {
     const forum = document.getElementById("forum");
     const postsContainer = document.getElementById("postsContainer");
     const deleteBtn= document.querySelector(".delete-btn");
+    const asideFixed= document.querySelector(".asideFixed");
 
-    const aside= document.querySelectorAll("#postsContainer");
+    // const aside= document.querySelectorAll("#postsContainer");
 
-    deleteBtn.addEventListener('click', function(event) {
-        event.preventDefault();
+//     deleteBtn.addEventListener('click', function(event) {
+//         event.preventDefault();
 
-        let posts = JSON.parse(localStorage.getItem("posts"));
+//         let posts = JSON.parse(localStorage.getItem("posts"));
 
-        const log = aside[0].children;
+//         const log = aside[0].children;
 
-        let savePosts = [];
+//         let savePosts = [];
 
-       for(let i = 0; i < log.length; i++){
+//        for(let i = 0; i < log.length; i++){
 
-        // console.log(log[i].children[0].children[0].checked);
+//         // console.log(log[i].children[0].children[0].checked);
 
 
-        if(!log[i].children[0].children[0].checked)
-        {
-            savePosts.push(log[i].children[0])
-        };
+//         if(!log[i].children[0].children[0].checked)
+//         {
+//             savePosts.push(log[i].children[0])
+//         };
 
-       }
+//        }
 
-       posts = savePosts;
+//        posts = savePosts;
 
-       localStorage.setItem("posts", JSON.stringify(posts));
+//        localStorage.setItem("posts", JSON.stringify(posts));
 
-       console.log(posts);
+//        console.log(posts);
 
-       displayPosts();
+//        displayPosts();
 
        
-//TODO: 
-//TODO: replace locale storage with updated array
-//TODO: redisplay posts
+// //TODO: 
+// //TODO: replace locale storage with updated array
+// //TODO: redisplay posts
 
-    })
+//     })
 
+deleteBtn.addEventListener('click', function(event) {
+    event.preventDefault();
+
+    let posts = JSON.parse(localStorage.getItem("posts"));
+    const checkboxes = document.querySelectorAll(".post-checkbox");
+    
+    // Filter out checked posts
+    let updatedPosts = posts.filter((post, index) => {
+        const checkbox = checkboxes[index];
+        return checkbox && !checkbox.checked;
+    });
+
+    localStorage.setItem("posts", JSON.stringify(updatedPosts));
+
+    displayPosts();
+});
 
     openModalBtn.onclick = function() {
         modal.style.display = "block";
@@ -91,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function() {
             postElement.innerHTML = `
                 <div class="post-content">
                     <input type="checkbox" class="post-checkbox" data-index="${index}"/>
-                    <a href="#">${post.title}</a>
+                    <a href="#" data-index="${index}">${post.title}</a>
                     <span class="post-description">${post.description}</span>
                 </div>`;
             postsContainer.appendChild(postElement);
@@ -108,7 +125,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     function showPost(index){
         //-A clears previous posts
-        postsContainer.innerHTML="";
         const posts = JSON.parse(localStorage.getItem("posts"));
         const post = posts[index];
         document.getElementById("postTitle").textContent = post.title;
@@ -127,11 +143,23 @@ document.addEventListener("DOMContentLoaded", function() {
       /* if scrolling down, let it scroll out of view as normal */
       if (prevScrollpos <= currentScrollPos ){
           headerDiv.classList.remove("fixedHeader");
+          
       }
       /* otherwise if we're scrolling up, fix the nav to the top */
       else{
           headerDiv.classList.add("fixedHeader");
       }
+
+      if (prevScrollpos > headerDiv.offsetHeight ){
+        asideFixed.classList.remove("asideFixed");
+        asideFixed.classList.add("asideFixedTop");
+        }
+        /* otherwise if we're scrolling up, fix the nav to the top */
+        else{
+            asideFixed.classList.remove("asideFixedTop");
+            asideFixed.classList.add("asideFixed");
+        }
+        
       prevScrollpos = currentScrollPos;
     }
     })
