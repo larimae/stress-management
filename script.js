@@ -12,7 +12,11 @@ document.addEventListener("DOMContentLoaded", function() {
     deleteBtn.addEventListener('click', function(event) {
         event.preventDefault();
 
-        console.log(aside[0].children);
+        const log = aside[0].children;
+
+       const check = log[0].children[0].children[0];
+
+       console.log(check.checked);
     })
 
 
@@ -60,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function() {
             //A- adding a checkbox with each post with class post-checkbox
             postElement.innerHTML = `
                 <div class="post-content">
-                    <input type="checkbox" class="post-checkbox" data-index="${index}" checked/>
+                    <input type="checkbox" class="post-checkbox" data-index="${index}"/>
                     <a href="#">${post.title}</a>
                     <span class="post-description">${post.description}</span>
                 </div>`;
@@ -88,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     function deletePosts(){
         //A- creating a const called checkBoxes to see which boxes are checked
-        const checkBoxes = querySelectorAll('input[type="checkbox"]:checked');
+        const checkBoxes = querySelectorAll('input[type="checkbox"]');
         const posts = JSON.parse(localStorage.getItem("posts")) || [];
 
         if (checkBoxes.length === 0) {
