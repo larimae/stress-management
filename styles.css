@@ -31,11 +31,12 @@ header h1{
 }
 
 .burger-menu{
-    display: block;
+    display: none;
     border-radius: 5px;
     float: right;
     margin-left: 25px;
 }
+
 .burger-menu .line{
     width: 30px;
     height: 3px;
@@ -373,4 +374,32 @@ canvas:hover{
     padding: .2rem;
     justify-content: space-between;
     text-decoration: none;
+}
+
+@media (max-width: 767px){
+    .navbar{
+        display: none;
+    }
+    .burger-menu{
+        display: block;
+    }
+}
+
+@media (max-width: 992px){
+
+    .navbar{
+        display: none;
+    }
+    .burger-menu{
+        display: block;
+    }
+}
+
+@media (max-width: 1200px){
+    .navbar{
+        display: none;
+    }
+    .burger-menu{
+        display: block;
+    }
 }
