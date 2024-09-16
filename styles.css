@@ -1,7 +1,11 @@
+* {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
 body{
     margin: 0;
     padding: 0;
-   
+    background-color: #f4edf4;
 
 }
 
@@ -11,8 +15,8 @@ header{
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    border-bottom: solid 2px black;
-    background-color: white;
+    border-bottom: solid 2px rgb(175, 152, 114);
+    background-color: rgb(229, 214, 189);
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
@@ -94,8 +98,11 @@ header h1{
     margin: 20px;
     width: 60%;
     height: 500px;
-    border: solid 2px black;
+    border: solid 2px rgb(166, 181, 150);
     box-sizing: border-box;
+    background-color: rgb(191, 208, 172);
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px rgb(166, 181, 150);
 }
 .main-sizing{
     flex: 1 0 60%;
@@ -109,11 +116,13 @@ header h1{
     margin: 20px;
     width: 75%;
     height: 300px;
-    border: solid 2px black;
+    border: solid 2px rgb(166, 181, 150);
     box-sizing: border-box;
     width: 75%;
     overflow-y: auto;
-
+    background-color: rgb(226, 238, 214);
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px rgb(166, 181, 150);
 }
 
 .card-content {
@@ -136,18 +145,18 @@ header h1{
 
 .image-container{
     display: block;
-    border: solid 2px black;
     max-width: 16%;
     height: 70%;
     margin-top: 10px;
     margin-left: 10px;
-    
 }
 
 .image{
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 10px;
+    border: solid 2px black;
 }
 
 .menu-btn:hover{
@@ -254,7 +263,7 @@ button {
     font-size: 10px;
     width: 75px;
     height: 25px;
-    background-color: #4CAF50;
+    background-color: #78a979;
     color: white;
     cursor: pointer;
     align-self: center;
@@ -286,7 +295,7 @@ button:hover {
 
 
 .delete-btn {
-    background-color: #f44336; 
+    background-color: #e5635a; 
     color: white;
     border: none;
     padding: 5px 10px;
@@ -305,14 +314,18 @@ button:hover {
     padding: 2px;
     height: 100%;
     width: 100%;
-    border: 1px solid gray;
+    border: 1px solid rgb(175, 152, 114);
     overflow-y: auto;
+    background-color: rgb(229, 214, 189);
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px 1px rgb(175, 152, 114);;
 }
 
 .aside-container{
     width: 12%;
     height: 85%;
-     transition: width 0.5s ease, height 0.5s ease, padding 0.5s ease;
+    transition: width 0.5s ease, height 0.5s ease, padding 0.5s ease;
+    
 }
 canvas {
     display: block;
