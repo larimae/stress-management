@@ -143,22 +143,15 @@ deleteBtn.addEventListener('click', function(event) {
       /* if scrolling down, let it scroll out of view as normal */
       if (prevScrollpos <= currentScrollPos ){
           headerDiv.classList.remove("fixedHeader");
-          
+          asideFixed.classList.remove("asideFixed");
+        asideFixed.classList.add("asideFixedTop");
       }
       /* otherwise if we're scrolling up, fix the nav to the top */
       else{
           headerDiv.classList.add("fixedHeader");
-      }
-
-      if (prevScrollpos > headerDiv.offsetHeight ){
-        asideFixed.classList.remove("asideFixed");
-        asideFixed.classList.add("asideFixedTop");
-        }
-        /* otherwise if we're scrolling up, fix the nav to the top */
-        else{
-            asideFixed.classList.remove("asideFixedTop");
+          asideFixed.classList.remove("asideFixedTop");
             asideFixed.classList.add("asideFixed");
-        }
+      }
         
       prevScrollpos = currentScrollPos;
     }
