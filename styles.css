@@ -257,6 +257,7 @@ button {
     background-color: #4CAF50;
     color: white;
     cursor: pointer;
+    align-self: center;
 }
 
 button:hover {
