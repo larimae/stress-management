@@ -5,7 +5,17 @@ document.addEventListener("DOMContentLoaded", function() {
     const closeBtn = document.getElementsByClassName("close");
     const forum = document.getElementById("forum");
     const postsContainer = document.getElementById("postsContainer");
-    const deleteBtn= document.getElementById("delete-btn");
+    const deleteBtn= document.querySelector(".delete-btn");
+
+    const aside= document.querySelectorAll("#postsContainer");
+
+    deleteBtn.addEventListener('click', function(event) {
+        event.preventDefault();
+
+        console.log(aside[0].children);
+    })
+
+
     openModalBtn.onclick = function() {
         modal.style.display = "block";
     }
@@ -50,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function() {
             //A- adding a checkbox with each post with class post-checkbox
             postElement.innerHTML = `
                 <div class="post-content">
-                    <input type="checkbox" class = "post-checkbox" data-index="${index}" checked>
+                    <input type="checkbox" class="post-checkbox" data-index="${index}" checked/>
                     <a href="#">${post.title}</a>
                     <span class="post-description">${post.description}</span>
                 </div>`;
