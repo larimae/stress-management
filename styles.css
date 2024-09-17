@@ -78,6 +78,40 @@ header h1{
     color: white;
 }
 
+.green-skates{
+    position: relative;
+    height: 100px;
+    width: 100px;
+}
+
+.game-boy{
+    position: relative;
+    height: 100px;
+    width: 100px;
+}
+
+.workout {
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    top: 200px;
+    right: 350px;
+}
+
+.nose {
+        height: 200px;
+        width: 200px;
+}
+
+.duck {
+    /* position: absolute; */
+    height: 80px;
+    width: 100px;
+    display: inline;
+    margin-left: 100px;
+    /* bottom: -2270px; */
+}
+
 .main-content{
     display: flex;
     flex-direction: row;
@@ -93,6 +127,7 @@ header h1{
     padding: 0;
     margin: 0;
 }
+
 .main-card{
     display: block;
     margin: 20px;
@@ -160,7 +195,7 @@ header h1{
 }
 
 .menu-btn:hover{
-    background-color: black;
+    background-color: rgb(111, 83, 66);
     cursor: pointer;
     transform: scale(1.2);
 }
@@ -277,20 +312,22 @@ button:hover {
    display: flex;
    flex-direction: row;
    flex-wrap: wrap;
-   border: solid 2px black;
+   border: solid 2px rgb(135, 122, 115);
    margin-bottom: 10px;
+   border-radius: 5px;
 }
 
 .post-description {
-    
+    display: block;
 }
 
 .post a {
-    
+    color: rgb(99, 25, 25);
 }
 
 .post a:hover {
     text-decoration: underline;
+    color: purple;
 }
 
 
@@ -370,6 +407,7 @@ canvas:hover{
     flex: 1 0 20%;
     width: 40px;
     height: 40px;
+    border-radius: 5px;
 
 }
 
@@ -379,6 +417,7 @@ canvas:hover{
     z-index: 1;
 }
 
+
 .navbar{
     display: flex;
     margin-right: 2%;
@@ -386,11 +425,13 @@ canvas:hover{
 
 .navbar a{
     display: inline-flex;
-    border: solid 2px black;
     margin: .5rem;
     padding: .2rem;
     justify-content: space-between;
     text-decoration: none;
+    color: black;
+    background-color: #c8a687;
+    border-radius: 5px;
 }
 
 .header-content {
@@ -415,6 +456,20 @@ canvas:hover{
     .burger-menu{
         display: block;
     }
+
+    .card{
+        height: 700px;
+    }
+
+    .main-card {
+        height: 700px;
+    }
+    .green-skates{
+        display: none;
+    }
+    .workout {
+        display: none;
+    }
 }
 
 @media (min-width: 768px) and (max-width: 991px){
@@ -431,6 +486,22 @@ canvas:hover{
     .burger-menu{
         display: block;
     }
+    .card{
+        height: 550px;
+    }
+
+    .main-card {
+        height: 700px;
+    }
+    .green-skates{
+        display: none;
+    }
+    .nose{
+        display: none;
+    }
+    .workout {
+        display: none;
+    }
 }
 
 @media (min-width: 992px) and (max-width: 1199px){
@@ -442,10 +513,26 @@ canvas:hover{
         max-width: 22%;
     }
     .navbar{
-        display: none;
+        display: block;
     }
     .burger-menu{
-        display: block;
+        display: none;
+    }
+    .card{
+        height: 550px;
+    }
+    .green-skates{
+        display: none;
+    }
+    .nose{
+        display: none;
+    }
+    .workout {
+        position: absolute;
+        height: 200px;
+        width: 200px;
+        top: 200px;
+        right: 250px;
     }
 }
 
@@ -458,10 +545,20 @@ canvas:hover{
         max-width: 17%;
     }
     .navbar{
-        display: none;
+        display: block;
     }
     .burger-menu{
-        display: block;
+        display: none;
+    }
+    .nose{
+        display: none;
+    }
+    .workout {
+        position: absolute;
+        height: 200px;
+        width: 200px;
+        top: 200px;
+        right: 250px;
     }
 }
 
@@ -474,9 +571,9 @@ canvas:hover{
         max-width: 15%;
     }
     .navbar{
-        display: none;
+        display: block;
     }
     .burger-menu{
-        display: block;
+        display: none;
     }
 }
