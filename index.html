@@ -7,7 +7,9 @@
         <link rel="stylesheet" type="text/css" href="./styles.css">
         <title>Project 1/StressManagement</title>
     </head>
-    <body>
+    <body id="background-container">
+        <audio id="happyBGM" src="./bgm/be-happy-190870.mp3" loop></audio>
+        <audio id="sadBGM" src="./bgm/sad-violin-150146.mp3" loop></audio>
         <header class="fixedHeader">
                 <nav>
                     <div class="burger-menu menu-btn" tabindex="0">
@@ -210,7 +212,7 @@
 
                                 <canvas id="drawingCanvas"></canvas>
 
-                                <button type="submit">Submit</button>
+                                <button type="submit" id="submit">Submit</button>
                             </form>
                         </div>
                     </div>
@@ -220,6 +222,7 @@
                             <h2 id="postTitle">Title</h2>
                             <p id="postDescription">Description</p>
                             <p id="postContent">Content</p>
+                            <img id="postImage" src="" alt="Drawing"/>
                         </div>
                     </div>
                     <div id="postsContainer">
