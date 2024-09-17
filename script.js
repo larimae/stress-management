@@ -13,45 +13,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const context = canvas.getContext('2d');
     const brushSize = document.getElementById('brushSize');
 
-    // const aside= document.querySelectorAll("#postsContainer");
 
-//     deleteBtn.addEventListener('click', function(event) {
-//         event.preventDefault();
-
-//         let posts = JSON.parse(localStorage.getItem("posts"));
-
-//         const log = aside[0].children;
-
-//         let savePosts = [];
-
-//        for(let i = 0; i < log.length; i++){
-
-//         // console.log(log[i].children[0].children[0].checked);
-
-
-//         if(!log[i].children[0].children[0].checked)
-//         {
-//             savePosts.push(log[i].children[0])
-//         };
-
-//        }
-
-//        posts = savePosts;
-
-//        localStorage.setItem("posts", JSON.stringify(posts));
-
-//        console.log(posts);
-
-//        displayPosts();
-
-       
-// //TODO: 
-// //TODO: replace locale storage with updated array
-// //TODO: redisplay posts
-
-//     })
-
-deleteBtn.addEventListener('click', function(event) {
+    deleteBtn.addEventListener('click', function(event) {
     event.preventDefault();
 
     let posts = JSON.parse(localStorage.getItem("posts"));
@@ -65,7 +28,7 @@ deleteBtn.addEventListener('click', function(event) {
     localStorage.setItem("posts", JSON.stringify(updatedPosts));
 
     displayPosts();
-});
+    });
 
     openModalBtn.onclick = function() {
         modal.style.display = "block";
@@ -77,7 +40,7 @@ deleteBtn.addEventListener('click', function(event) {
         modal.style.display = "none";
         postModal.style.display = "none";
     }
-    for (var i = 0; i < closeBtn.length; i++) {
+    for (const i = 0; i < closeBtn.length; i++) {
         closeBtn[i].onclick = closeModal;
     }
     window.onclick = function(event) {
