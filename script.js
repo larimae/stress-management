@@ -203,7 +203,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const happyBGM = document.getElementById('happyBGM');
         const sadBGM = document.getElementById('sadBGM');
     
-        // Keywords and corresponding backgrounds
+
         const keywords = {
             happyKeywords: {
                 'alive': 'bg-happy', 'amused': 'bg-happy', 'bright': 'bg-happy', 'cheerful': 'bg-happy',
@@ -281,7 +281,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
         
-        // Set initial volume and pause background music
+        
         happyBGM.volume = 0.5;
         sadBGM.volume = 0.5;
         happyBGM.pause();
@@ -289,23 +289,23 @@ document.addEventListener("DOMContentLoaded", function() {
     
         applyButton.addEventListener('click', function() {
             const text = journalEntry.value.toLowerCase();
-            const words = text.split(/\s+/); // Split text into words
+            const words = text.split(/\s+/); 
         
-            // Remove existing background classes
+           
             Object.values(keywords).forEach(keywordGroup => {
                 Object.values(keywordGroup).forEach(className => {
                     backgroundContainer.classList.remove(className);
                 });
             });
         
-            // Initialize counters and music play state
+            
             let happyCount = 0;
             let sadCount = 0;
         
-            // Count occurrences of happy and sad keywords
+            
             for (const [keywordGroup, classMap] of Object.entries(keywords)) {
                 for (const [keywordWord] of Object.entries(classMap)) {
-                    // Count how many times each keyword appears in the text
+                    
                     const keywordFrequency = words.filter(word => word === keywordWord).length;
                     if (keywordGroup === 'happyKeywords') {
                         happyCount += keywordFrequency;
@@ -315,7 +315,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             }
         
-            // Determine which background to apply based on counts
+           
             if (happyCount > sadCount) {
                 backgroundContainer.classList.add('bg-happy');
                 if (happyBGM.paused) {
@@ -329,7 +329,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
                 happyBGM.pause();
             } else {
-                // If counts are equal or no relevant keywords are found
+                
                 happyBGM.pause();
                 sadBGM.pause();
             }
