@@ -324,11 +324,20 @@ button:hover {
    border-radius: 5px;
 }
 
+
+
 .post a:hover {
     text-decoration: underline;
     color: purple;
 }
 
+.post-description {
+    display: block;
+}
+
+.post a {
+    color: rgb(99, 25, 25);
+}
 
 .delete-btn {
     background-color: #e5635a; 
@@ -404,7 +413,9 @@ canvas:hover{
     background-color: white;
     margin: 2px;
     flex: 1 0 20%;
-
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
 }
 
 .post-icon:hover{
@@ -443,11 +454,11 @@ canvas:hover{
 }
 
 .bg-sad {
-    background-color: blue;
+    background-color: rgb(69, 69, 105);
 }
 
 .bg-happy {
-    background-color: yellow;
+    background-color: rgb(238, 227, 154);
 }
 
 @media (max-width: 767px){
@@ -557,7 +568,16 @@ canvas:hover{
     }
     .burger-menu{
         display: none;
-
+    }
+    .nose{
+        display: none;
+    }
+    .workout {
+        position: absolute;
+        height: 200px;
+        width: 200px;
+        top: 200px;
+        right: 250px;
     }
 }
 
